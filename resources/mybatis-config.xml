@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 指定日志工具 -->
+		<setting name="logImpl" value="LOG4J" />
+		<!-- 指定 MyBatis 应如何自动映射列到字段或属性。 -->
+		<setting name="autoMappingBehavior" value="FULL"/>
+	</settings>
+	
+	<!-- 为 Java 类型命名一个别名（简称） -->
+	<typeAliases>
+		<!-- 指定包下javabean的非限定类名 -->
+		<package name="com.lha.ssm.entity"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/lha/ssm/dao/UserDAO.xml"/>
+		<mapper resource="com/lha/ssm/dao/AddressDAO.xml"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lha.ssm.dao.UserDao">
+
+	<select id="login" resultType="User">
+		SELECT * FROM `easybuy_user` where
+		loginName=#{loginName} and password=#{password};
+	</select>
+	
+	<select id="queryUser" parameterType="Integer" resultType="User">
+		SELECT * FROM `easybuy_user` where `id`=#{value};
+	</select>
+
+    <select id="allUser" resultType="User">
+        SELECT * FROM `easybuy_user`
+        <where>
+            <if test="loginName!=null and loginName!=''">
+                `loginName` LIKE "%"#{loginName}"%"
+            </if>
+            <if test="userName!=null and userName!=''">
+                AND `userName` LIKE "%"#{userName}"%"
+            </if>
+            <if test="sex!=null">
+                AND `sex`= #{sex}
+            </if>
+            <if test="mobile!=null and mobile!=''">
+                AND `mobile` LIKE "%"#{mobile}"%"
+            </if>
+        </where>
+        ;
+    </select>
+
+	<select id="allUserByPage" resultType="User">
+		SELECT * FROM `easybuy_user`
+		<where>
+			<if test="user.loginName!=null and user.loginName!=''">
+				`loginName` LIKE "%"#{user.loginName}"%"
+			</if>
+			<if test="user.userName!=null and user.userName!=''">
+				 AND `userName` LIKE "%"#{user.userName}"%"
+			</if>
+			<if test="user.sex!=null">
+				AND `sex`= #{user.sex}
+			</if>
+			<if test="user.mobile!=null and user.mobile!=''">
+				AND `mobile` LIKE "%"#{user.mobile}"%"
+			</if>
+		</where>
+		LIMIT #{pageIndex},#{pageSize};
+	</select>
+	
+	<select id="checkLogin" resultType="int">
+		SELECT COUNT(1) FROM `easybuy_user` where `loginName`=#{value};
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT COUNT(1) FROM `easybuy_user`
+		<where>
+			<if test="loginName!=null and loginName!=''">
+				`loginName` LIKE "%"#{loginName}"%"
+			</if>
+			<if test="userName!=null and userName!=''">
+				 AND `userName` LIKE "%"#{userName}"%"
+			</if>
+			<if test="sex!=null">
+				AND `sex`= #{sex}
+			</if>
+			<if test="mobile!=null and mobile!=''">
+				AND `mobile` LIKE "%"#{mobile}"%"
+			</if>
+		</where>
+		;
+	</select>
+	
+
+	<insert id="addUser" parameterType="User">
+		INSERT INTO `easybuy_user`(`loginName`,`userName`,`password`,`sex`
+		<trim>
+			<if test="identityCode!=null and identityCode!=''">
+				,`identityCode`
+			</if>
+			<if test="email!=null and email!=''">
+				,`email`
+			</if>
+			<if test="mobile!=null and mobile!=''">
+				,`mobile`
+			</if>
+			<if test="type!=null">
+				,`type`
+			</if>
+		</trim>)
+		 VALUE(#{loginName},#{userName},#{password},#{sex}
+		 <trim>
+			<if test="identityCode!=null and identityCode!=''">
+				,#{identityCode}
+			</if>
+			<if test="email!=null and email!=''">
+				,#{email}
+			</if>
+			<if test="mobile!=null and mobile!=''">
+				,#{mobile}
+			</if>
+			<if test="type!=null">
+				,#{type}
+			</if>
+		</trim>
+		);
+	</insert>
+
+	<delete id="deleteUser" parameterType="Integer">
+		DELETE FROM `easybuy_user` WHERE id=#{value };
+	</delete>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE `easybuy_user` SET `loginName`=#{loginName},`userName`=#{userName},
+		`password`=#{password},`sex`=#{sex},`identityCode`=#{identityCode},
+		`email`=#{email},`mobile`=#{mobile},`type`=#{type} WHERE id=#{id};
+	</update>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lha.ssm.dao.AddressDao">
+
+	<insert id="addAddress" parameterType="Address">
+		INSERT INTO
+		`easybuy_user_address`(`userId`,`address`,`createTime`,`isDefault`,`remark`)
+		VALUE(#{userId},#{address},#{createTime},#{isDefault},#{remark});
+	</insert>
+	
+	<select id="allAddress" resultType="Address">
+		SELECT * FROM `easybuy_user_address`;
+	</select>
+
+</mapper>
