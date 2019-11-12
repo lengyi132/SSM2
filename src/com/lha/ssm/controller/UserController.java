@@ -1,7 +1,10 @@
 package com.lha.ssm.controller;
 
-import java.util.List;
-
+import com.lha.ssm.entity.PageBean;
+import com.lha.ssm.entity.User;
+import com.lha.ssm.service.UserService;
+import com.lha.ssm.validated.Login;
+import com.lha.ssm.validated.Regist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lha.ssm.entity.PageBean;
-import com.lha.ssm.entity.User;
-import com.lha.ssm.service.UserService;
-import com.lha.ssm.validated.Login;
-import com.lha.ssm.validated.Regist;
-
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -83,8 +81,8 @@ public class UserController {
     }
 
     @RequestMapping("/checkLoginName")
-    public @ResponseBody
-    String checkLoginName(String loginName) {
+    @ResponseBody
+    public String checkLoginName(String loginName) {
         boolean isok = us.checkLogin(loginName);
         String rs = "用户名已被占用";
         if (isok) {
@@ -101,48 +99,48 @@ public class UserController {
     }
 
     @RequestMapping("/initAddUser")
-    public String initAddUser(){
+    public String initAddUser() {
         return "WEB-INF/pages/manage/addUser";
     }
 
     @RequestMapping("/addUser")
-    public String addUser(User user,Model model) {
+    public String addUser(User user, Model model) {
         int i = us.addUser(user);
-        if (i>0){
-            model.addAttribute("Msg","true");
-        }else {
-            model.addAttribute("Msg","false");
+        if (i > 0) {
+            model.addAttribute("Msg", "addtrue");
+        } else {
+            model.addAttribute("Msg", "addfalse");
         }
-        return "forward:/allUser";
+        return "redirect:/allUser";
     }
 
     @RequestMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable("id")Integer id,Model model){
+    public String deleteUser(@PathVariable("id") Integer id, Model model) {
         System.out.println(id);
         boolean b = us.deleteUser(id);
         if (b) {
-            model.addAttribute("Msg","用户删除成功");
-        }else {
-            model.addAttribute("Msg","用户删除失败");
+            model.addAttribute("Msg", "deltrue");
+        } else {
+            model.addAttribute("Msg", "delfalse");
         }
-        return "forward:/allUser";
+        return "redirect:/allUser";
     }
 
     @RequestMapping("/updateUser")
-    public String updateUser(User user,Model model){
+    public String updateUser(User user, Model model) {
         boolean b = us.updateUser(user);
         if (b) {
-            model.addAttribute("Msg","用户修改成功");
-        }else {
-            model.addAttribute("Msg","用户修改失败");
+            model.addAttribute("Msg", "用户修改成功");
+        } else {
+            model.addAttribute("Msg", "用户修改失败");
         }
         return "WEB-INF/pages/manage/user";
     }
 
     @RequestMapping("/queryUser/{id}")
-    public String queryUser(@PathVariable("id")Integer id,Model model){
+    public String queryUser(@PathVariable("id") Integer id, Model model) {
         User user = us.queryUser(id);
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "WEB-INF/pages/manage/user";
     }
 }

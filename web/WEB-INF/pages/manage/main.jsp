@@ -62,8 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="left_m">
             	<div class="left_m_t t_bg1">商品管理</div>
                 <ul>
-                	<li><a href="allProductServlet" class="now" target="right">查看所有</a></li>
-                    <li><a href="addProduct.jsp" target="right">新增</a></li>
+                	<li><a href="allProduct" class="now" target="right">查看所有</a></li>
+                    <li><a href="initAddProduct" target="right">新增</a></li>
                 </ul>
             </div>
             <div class="left_m">

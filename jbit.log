@@ -1,0 +1,5 @@
+2019-11-12 19:29:43org.mybatis.generator.logging.Log4jImpl.debug(Log4jImpl.java:46) Log4jImpl.java DEBUG Retrieving column information for table "easybuy_news"
+2019-11-12 19:29:43org.mybatis.generator.logging.Log4jImpl.debug(Log4jImpl.java:46) Log4jImpl.java DEBUG Found column "id", data type 4, in table "easybuy_news"
+2019-11-12 19:29:43org.mybatis.generator.logging.Log4jImpl.debug(Log4jImpl.java:46) Log4jImpl.java DEBUG Found column "title", data type 12, in table "easybuy_news"
+2019-11-12 19:29:43org.mybatis.generator.logging.Log4jImpl.debug(Log4jImpl.java:46) Log4jImpl.java DEBUG Found column "content", data type 12, in table "easybuy_news"
+2019-11-12 19:29:43org.mybatis.generator.logging.Log4jImpl.debug(Log4jImpl.java:46) Log4jImpl.java DEBUG Found column "createTime", data type 12, in table "easybuy_news"

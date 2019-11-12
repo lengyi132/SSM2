@@ -2,9 +2,16 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/resources/log4j.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lha/ssm/controller/UserController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lha/ssm/entity/Product.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lha/ssm/entity/Product_Category.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/jstl-1.2_1.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/mybatis-generator-core-1.3.5.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/pages/manage/addProduct.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/pages/manage/addUser.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/pages/manage/productList.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/pages/manage/user.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/photo" charset="UTF-8" />
   </component>
 </project>

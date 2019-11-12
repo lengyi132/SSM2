@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lha.ssm.dao.ProductDao">
+
+	<select id="allProduct" resultType="Product">
+		SELECT * FROM `easybuy_product`;
+	</select>
+
+	<select id="queryProductPage" resultType="Product">
+		SELECT * FROM `easybuy_product`
+		 <where>
+			 <if test="product.name!=null and product.name!=''">
+				 AND `name` LIKE "%"#{product.name}"%"
+			 </if>
+			 <if test="product.description!=null and product.description!=''">
+				 AND `description` LIKE "%"#{product.description}"%"
+			 </if>
+			 <if test="product.price!=null">
+				 AND `price` &gt; #{product.price}
+			 </if>
+			 <if test="product.price2!=null">
+				 AND `price` &lt; #{product.price2}
+			 </if>
+			 <if test="product.categoryLevel1Id!=null">
+				 AND `categoryLevel1Id` = #{product.categoryLevel1Id}
+			 </if>
+			 <if test="product.categoryLevel2Id!=null">
+				 AND `categoryLevel2Id` = #{product.categoryLevel2Id}
+			 </if>
+			 <if test="product.categoryLevel3Id!=null">
+				 AND `categoryLevel3Id` = #{product.categoryLevel3Id}
+			 </if>
+			 <if test="product.isDelete!=null">
+				 AND `isDelete`= #{product.isDelete}
+			 </if>
+		 </where>
+		 LIMIT #{pageIndex},#{pageSize};
+	</select>
+
+	<insert id="addProduct" parameterType="Product">
+		INSERT INTO `easybuy_product`(`name`,`description`,`price`,`stock`,`categoryLevel1Id`,
+		`categoryLevel2Id`,`categoryLevel3Id`,`fileName`,`isDelete`)
+		VALUE(#{name},#{description},#{price},#{stock},#{categoryLevel1Id},
+		#{categoryLevel2Id},#{categoryLevel3Id},#{fileName},#{isDelete},);
+	</insert>
+
+	<select id="queryCount" resultType="Integer">
+		SELECT COUNT(1) FROM `easybuy_product`
+		<where>
+			<if test="name!=null and name!=''">
+				AND `name` LIKE "%"#{ name}"%"
+			</if>
+			<if test="description!=null and description!=''">
+				AND `description` LIKE "%"#{description}"%"
+			</if>
+			<if test="price!=null">
+				AND `price` &gt; #{price}
+			</if>
+			<if test="price2!=null">
+				AND `price` &lt; #{price2}
+			</if>
+			<if test="categoryLevel1Id!=null">
+				AND `categoryLevel1Id` = #{categoryLevel1Id}
+			</if>
+			<if test="categoryLevel2Id!=null">
+				AND `categoryLevel2Id` = #{categoryLevel2Id}
+			</if>
+			<if test="categoryLevel3Id!=null">
+				AND `categoryLevel3Id` = #{categoryLevel3Id}
+			</if>
+			<if test="isDelete!=null">
+				AND `isDelete`= #{isDelete}
+			</if>
+		</where>
+	</select>
+
+</mapper>

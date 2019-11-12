@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if(loginName==""||loginName.length==0){
 					return;
 				}
-				$.getJSON("checkLoginName.action","loginName="+loginName,function(rs){
+				$.getJSON("checkLoginName","loginName="+loginName,function(rs){
 					$("#showCheckLogin").html(rs);
 				});
 			});

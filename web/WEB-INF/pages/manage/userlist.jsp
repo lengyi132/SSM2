@@ -17,28 +17,27 @@
 <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
 <div class="m_right">
-    <h3>${Msg}</h3>
     <div class="mem_tit">用户信息</div>
 
-    <c:if test="${requestScope.reg eq 'true' }">
+    <c:if test="${Msg eq 'deltrue' }">
         <script type="text/javascript">
             alert("删除成功");
         </script>
     </c:if>
 
-    <c:if test="${request.reg eq 'false' }">
+    <c:if test="${Msg eq 'delfalse' }">
         <script type="text/javascript">
             alert("删除失败");
         </script>
     </c:if>
 
-    <c:if test="${Msg eq 'true' }">
+    <c:if test="${Msg eq 'addtrue' }">
         <script type="text/javascript">
             alert("用户添加成功");
         </script>
     </c:if>
 
-    <c:if test="${Msg eq 'false' }">
+    <c:if test="${Msg eq 'addfalse' }">
         <script type="text/javascript">
             alert("用户添加失败");
         </script>

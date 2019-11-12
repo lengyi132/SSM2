@@ -16,7 +16,9 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="com/lha/ssm/dao/UserDAO.xml"/>
-		<mapper resource="com/lha/ssm/dao/AddressDAO.xml"/>
+		<mapper resource="com/lha/ssm/dao/UserDao.xml"/>
+		<mapper resource="com/lha/ssm/dao/AddressDao.xml"/>
+		<mapper resource="com/lha/ssm/dao/ProductDao.xml"/>
+		<mapper resource="com/lha/ssm/dao/CategoryDao.xml"/>
 	</mappers>
 </configuration>
